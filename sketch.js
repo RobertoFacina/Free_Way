@@ -54,12 +54,6 @@ function draw() {
 
   //Movimento
   movimentaCarros();
-  /*verificaColisãoVermelho();
-  verificaColisãoLaranja();
-  verificaColisãoVerde();
-  verificaColisãoOnibus();
-  verificaColisãoPickup();
-  verificaColisãoTaxi();*/
   colisaoCarros();
   voltaAtor();
   pontuacao();
