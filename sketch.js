@@ -19,7 +19,7 @@ let yAtor = 365;
 let xAtor = 300;
 let colisao = false;
 
-//Posições carros
+//Posições carros e velocidade
 
 let xCarros = [610, 610, 610, 610, 610, 610];
 let yCarros = [25, 65, 115, 160, 200, 300];
@@ -55,11 +55,11 @@ function draw() {
   //Movimento
   movimentaCarros();
   colisaoCarros();
-  voltaAtor();
   pontuacao();
   incluirPontos();
   podeSeMover();
   movimentoAtor();
+  
 }
 
 function preload() {
@@ -86,6 +86,22 @@ function preload() {
   ];
 }
 
+// função embaralhar velocidade
+
+function embaralhar(array) {
+    let currentIndex = array.length -1;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex >= 0) {
+  
+      // Pick a remaining element.
+      velocidadeCarros[currentIndex]= Math.floor(Math.random() * 6) + 1;
+      currentIndex--;
+    }
+  
+  }
+  
+
 //movimento ator
 
 function movimentoAtor() {
@@ -99,9 +115,7 @@ function movimentoAtor() {
   }
 }
 
-
 function movimentaCarros(){
-  
   
   for (let i = 0; i < imagensCarros.length; i++) {
      
@@ -132,17 +146,14 @@ function colisaoCarros(){
 
 // Reset
 
-function voltaAtor() {
-  if (yAtor == -15) {
-    yAtor = 365;
-  }
-}
-
 function pontuacao() {
   if (yAtor < -12) {
     meusPontos += 1;
     somDaChegada.play();
     yAtor = 365;
+    console.log(velocidadeCarros);
+    embaralhar(velocidadeCarros);
+    console.log(velocidadeCarros);
   }
 }
 
